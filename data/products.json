@@ -1,0 +1,41 @@
+{
+    "washing_machines": [
+        {
+            "id": "WA70A4002GS",
+            "name": "Samsung 7 KG Top Load Fully Automatic Washing Machine",
+            "model": "WA70A4002GS/TL",
+            "category": "washing_machines",
+            "type": "Top Load",
+            "capacity": "7 KG",
+            "price": 35990,
+            "energy_rating": "3 Star",
+            "rpm": 680,
+            "programs": ["Normal", "Quick Wash", "Delicate", "Eco Wash"],
+            "features": [
+                "Center Jet Technology",
+                "Diamond Drum",
+                "Eco Bubble Technology",
+                "Smart Check Error-Monitoring"
+            ]
+        },
+        {
+            "id": "WA90T5260BV",
+            "name": "Samsung 9 KG 5 Star Fully-Automatic Top Load Washing Machine",
+            "model": "WA90T5260BV/TL",
+            "category": "washing_machines",
+            "type": "Top Load",
+            "capacity": "9 KG",
+            "price": 45990,
+            "energy_rating": "5 Star",
+            "rpm": 720,
+            "programs": ["Normal", "Quick Wash", "Delicate", "Bedding", "Eco Wash", "Deep Clean"],
+            "features": [
+                "Diamond Drum",
+                "Digital Inverter Motor",
+                "Wobble Technology",
+                "Smart Check Error-Monitoring",
+                "Soft Closing Door"
+            ]
+        }
+    ]
+}

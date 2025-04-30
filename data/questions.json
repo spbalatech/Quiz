@@ -1,0 +1,64 @@
+{
+    "washing_machines": [
+        {
+            "id": 1,
+            "text": "What is your preferred washing machine capacity?",
+            "options": ["6-7 KG", "8-9 KG", "10+ KG"],
+            "price_impact": {"6-7 KG": -5000, "8-9 KG": 0, "10+ KG": 8000}
+        },
+        {
+            "id": 2,
+            "text": "Which type of loading do you prefer?",
+            "options": ["Top Load", "Front Load"],
+            "price_impact": {"Top Load": 0, "Front Load": 10000}
+        },
+        {
+            "id": 3,
+            "text": "What energy efficiency rating are you looking for?",
+            "options": ["3 Star", "4 Star", "5 Star"],
+            "price_impact": {"3 Star": -3000, "4 Star": 0, "5 Star": 5000}
+        },
+        {
+            "id": 4,
+            "text": "How many wash programs do you need?",
+            "options": ["Basic (4-5)", "Standard (6-8)", "Advanced (9+)"],
+            "price_impact": {"Basic (4-5)": -2000, "Standard (6-8)": 0, "Advanced (9+)": 4000}
+        },
+        {
+            "id": 5,
+            "text": "What spin speed (RPM) range do you prefer?",
+            "options": ["Up to 700 RPM", "700-800 RPM", "800+ RPM"],
+            "price_impact": {"Up to 700 RPM": -1500, "700-800 RPM": 0, "800+ RPM": 3000}
+        },
+        {
+            "id": 6,
+            "text": "Do you need smart features (Wi-Fi, Smart Diagnosis)?",
+            "options": ["No smart features", "Basic smart features", "Advanced smart features"],
+            "price_impact": {"No smart features": -4000, "Basic smart features": 0, "Advanced smart features": 6000}
+        },
+        {
+            "id": 7,
+            "text": "What type of drum material do you prefer?",
+            "options": ["Standard", "Diamond Drum", "Stainless Steel Special"],
+            "price_impact": {"Standard": -2000, "Diamond Drum": 0, "Stainless Steel Special": 3000}
+        },
+        {
+            "id": 8,
+            "text": "Do you need special wash technologies (e.g., Eco Bubble, Steam)?",
+            "options": ["No special technology", "Basic technology", "Advanced technology"],
+            "price_impact": {"No special technology": -3000, "Basic technology": 0, "Advanced technology": 5000}
+        },
+        {
+            "id": 9,
+            "text": "What type of motor do you prefer?",
+            "options": ["Regular Motor", "Digital Inverter Motor", "AI-Powered Motor"],
+            "price_impact": {"Regular Motor": -4000, "Digital Inverter Motor": 0, "AI-Powered Motor": 7000}
+        },
+        {
+            "id": 10,
+            "text": "What warranty coverage are you looking for?",
+            "options": ["1 Year", "2 Years", "3+ Years"],
+            "price_impact": {"1 Year": -2000, "2 Years": 0, "3+ Years": 3000}
+        }
+    ]
+}
