@@ -40,7 +40,7 @@ def send_registration_email(name, mobile):
         msg['To'] = EMAIL_CONFIG['receiver_email']
         
         with smtplib.SMTP_SSL(EMAIL_CONFIG['smtp_server'], EMAIL_CONFIG['smtp_port']) as smtp_server:
-            smtp_server.login(EMAIL_CONFIG['sender_email'], EMAIL_CONFIG['sender_password'])
+            smtp_server.login(EMAIL_CONFIG['sender_email'], EMAIL_CONFIG['key'])
             smtp_server.sendmail(
                 EMAIL_CONFIG['sender_email'],
                 EMAIL_CONFIG['receiver_email'],
@@ -55,7 +55,7 @@ def send_registration_email(name, mobile):
             2. Enable 2-Step Verification if not already enabled
             3. Go to Security > App passwords
             4. Generate a new app password for this application
-            5. Update the sender_password in config.py with the generated password""")
+            5. Update the key in config.py with the generated password""")
         else:
             st.error(f"Error sending email: {error_msg}")
         return False
@@ -223,7 +223,10 @@ def main():
         st.session_state.user_mobile = None
     
     # Initialize quiz session state
-    if 'current_index' not in st.session_state:
+    if 'quiz_products' not in st.session_state:
+        # Initialize random products
+        products = load_json('data/products.json')['products']
+        st.session_state.quiz_products = random.sample(products, 2)
         st.session_state.current_index = 0
         st.session_state.user_guess = None
         st.session_state.show_result = False

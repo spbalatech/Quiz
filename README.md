@@ -25,7 +25,7 @@ Then update the `config.py` file with your email settings:
 ```python
 EMAIL_CONFIG = {
     "sender_email": "your-gmail@gmail.com",  # Your Gmail address
-    "sender_password": "xxxx xxxx xxxx xxxx", # 16-character app password
+    "key": "xxxx xxxx xxxx xxxx", # 16-character app password
     "receiver_email": "admin@example.com",    # Email to receive registrations
     "smtp_server": "smtp.gmail.com",
     "smtp_port": 465
