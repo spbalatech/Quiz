@@ -1,34 +1,71 @@
-from PIL import Image, ImageDraw, ImageFont
 import os
+from PIL import Image, ImageDraw, ImageFont
+import json
 
-def create_placeholder_image(product_id, size=(400, 300), bg_color=(200, 200, 200)):
-    # Create a new image with a gray background
-    image = Image.new('RGB', size, bg_color)
+def create_placeholder_image(text, output_path, width=800, height=600):
+    # Create new image with white background
+    image = Image.new('RGB', (width, height), 'white')
     draw = ImageDraw.Draw(image)
     
-    # Add text
-    text = f"Product ID:\n{product_id}"
-    text_color = (50, 50, 50)  # Dark gray
+    # Draw gray rectangle as product placeholder
+    draw.rectangle([50, 50, width-50, height-50], outline='gray', width=2)
     
-    # Calculate text position (center)
-    text_bbox = draw.textbbox((0, 0), text)
-    text_width = text_bbox[2] - text_bbox[0]
-    text_height = text_bbox[3] - text_bbox[1]
-    text_x = (size[0] - text_width) // 2
-    text_y = (size[1] - text_height) // 2
+    # Add product text
+    try:
+        font = ImageFont.truetype("arial.ttf", 40)
+    except:
+        font = ImageFont.load_default()
+        
+    # Split text into lines
+    words = text.split()
+    lines = []
+    current_line = []
+    
+    for word in words:
+        current_line.append(word)
+        text_width = draw.textlength(" ".join(current_line), font=font)
+        if text_width > width - 100:
+            if len(current_line) > 1:
+                lines.append(" ".join(current_line[:-1]))
+                current_line = [word]
+            else:
+                lines.append(word)
+                current_line = []
+                
+    if current_line:
+        lines.append(" ".join(current_line))
     
     # Draw text
-    draw.text((text_x, text_y), text, fill=text_color)
+    total_text_height = len(lines) * 50
+    y = (height - total_text_height) // 2
     
-    # Ensure directory exists
-    os.makedirs('data/images', exist_ok=True)
+    for line in lines:
+        text_width = draw.textlength(line, font=font)
+        x = (width - text_width) // 2
+        draw.text((x, y), line, fill='black', font=font)
+        y += 50
     
-    # Save image
-    image.save(f'data/images/{product_id}.jpg')
+    # Create directory if it doesn't exist
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    
+    # Save the image
+    image.save(output_path)
 
-if __name__ == '__main__':
+def main():
+    # Load products data
+    with open('data/products.json', 'r') as f:
+        data = json.load(f)
+    
     # Create placeholder images for each product
-    product_ids = ['WA70A4002GS', 'WA90T5260BV']
-    for product_id in product_ids:
-        create_placeholder_image(product_id)
-        print(f"Created placeholder image for {product_id}")
+    for product in data['products']:
+        category = product['category']
+        product_id = product['id']
+        output_path = f'data/images/{category}/{product_id}.jpg'
+        
+        # Only create image if it doesn't exist
+        if not os.path.exists(output_path):
+            create_placeholder_image(product['name'], output_path)
+            print(f"Created placeholder image for {product['name']}")
+
+if __name__ == "__main__":
+    main()

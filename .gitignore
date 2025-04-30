@@ -1,0 +1,15 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Environment files
+.env
+venv/
+env/
+
+# Configuration files with sensitive data
+config.py
+
+# IDE files
+.vscode/
+.idea/
