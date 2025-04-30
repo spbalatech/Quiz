@@ -134,6 +134,8 @@ def show_quiz():
             with st.container():
                 if not st.session_state.show_result:
                     st.subheader("Guess the Price!")
+                    st.write(f"**MRP:** ₹{current_product['mrp']:,}")
+                    st.write("Try to guess our special offer price!")
                     user_guess = st.number_input("Enter your price guess (in ₹):", 
                                                min_value=5000, 
                                                max_value=200000, 
